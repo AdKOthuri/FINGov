@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom Web Content Overscroll, Scroller & Animation Helpers for APK wrapper */
+@layer utilities {
+  .scroller-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  .scroller-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Tap Interaction feedback */
+.active-scale-98:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================
+   HIGH-CONTRAST LIGHT MODE THEME OVERRIDES
+   ========================================== */
+
+/* Root light mode */
+.light {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+.light .bg-slate-950 {
+  background-color: #f1f5f9 !important;
+}
+
+.light .bg-slate-900 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+.light .bg-slate-900\/90 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: #cbd5e1 !important;
+}
+
+.light .bg-slate-950\/40, 
+.light .bg-slate-950\/60, 
+.light .bg-slate-950\/70,
+.light .bg-slate-950\/80 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.light .bg-slate-90, .light .bg-slate-900\/80 {
+  background-color: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+}
+
+.light .border-slate-800, 
+.light .border-slate-850, 
+.light .border-slate-800\/80, 
+.light .border-slate-850\/60 {
+  border-color: #cbd5e1 !important;
+}
+
+/* Light Mode Input Elements */
+.light input, 
+.light select, 
+.light textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+.light input:focus, 
+.light select:focus {
+  border-color: #f59e0b !important; /* amber-500 glow highlight */
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2) !important;
+}
+
+.light input::placeholder {
+  color: #64748b !important;
+}
+
+/* Text Overrides for crisp contrast */
+.light .text-white {
+  color: #0f172a !important;
+}
+
+.light .text-slate-100 {
+  color: #1e293b !important;
+}
+
+.light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+.light .text-slate-350 {
+  color: #334155 !important;
+}
+
+.light .text-slate-400 {
+  color: #475569 !important;
+}
+
+.light .text-slate-500 {
+  color: #64748b !important;
+}
+
+.light h1, .light h2, .light h3, .light h4, .light h5 {
+  color: #0f172a !important;
+}
+
+.light p {
+  color: #1e293b !important;
+}
+
+/* Background overlay containers and lists */
+.light #balances-and-debts-workspace .bg-slate-950,
+.light .bg-slate-950 {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Alerts and badges */
+.light .bg-amber-500\/10 {
+  background-color: #fef3c7 !important;
+  border-color: #fde68a !important;
+}
+
+.light .text-amber-500 {
+  color: #b45309 !important; /* darker amber for contrast */
+}
+
+.light .text-amber-300 {
+  color: #92400e !important;
+}
+
+.light .bg-indigo-500\/10 {
+  background-color: #e0e7ff !important;
+  border-color: #c7d2fe !important;
+}
+
+.light .text-indigo-400 {
+  color: #4338ca !important;
+}
+
+.light .text-emerald-400 {
+  color: #047857 !important; /* darker forest green */
+}
+
+.light .text-rose-400 {
+  color: #be123c !important; /* red */
+}
+
+.light .bg-slate-800 {
+  background-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+.light .bg-slate-900\/90 button {
+  color: #1e293b !important;
+}
+
+.light .bg-slate-900\/90 button:hover,
+.light .bg-slate-900\/90 button .text-slate-400 {
+  color: #0f172a !important;
+}
+
+/* Modal specific overrides */
+.light .bg-slate-900\/85 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.light .bg-slate-950\/85 {
+  background-color: rgba(15, 23, 42, 0.75) !important; /* keep overlay modal backdrop semi-opaque dim */
+}
+
+

@@ -1,0 +1,6 @@
+{
+  "name": "Automated Financial Dashboard",
+  "description": "Financial workspace for tracking balances, expenses, assets, and credit bills with smart OCR.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

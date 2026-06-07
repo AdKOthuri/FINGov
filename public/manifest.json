@@ -1,0 +1,19 @@
+{
+  "name": "Automated Financial Companion",
+  "short_name": "Companion",
+  "description": "Premium AI-powered native mobile companion for parent wealth accounting, automatic financial statements parsing, active SIP/Mutual Funds tracking, and instant tax slab optimization.",
+  "start_url": "./",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b0f19",
+  "theme_color": "#0b0f19",
+  "icons": [
+    {
+      "src": "/src/assets/images/app_logo_1780832193559.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

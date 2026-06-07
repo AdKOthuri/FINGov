@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" class="bg-slate-950 text-slate-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>जन धन (Jan Dhan)</title>
+    
+    <!-- Mobile App Settings & Standalone Mode Configuration -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="जन धन" />
+    <link rel="apple-touch-icon" href="/src/assets/images/app_logo_1780832193559.png" />
+    
+    <!-- Theme coloring for phone browsers -->
+    <meta name="theme-color" content="#0b0f19" />
+    <meta name="msapplication-TileColor" content="#0b0f19" />
+    
+    <!-- Progressive Web Application Manifest Linking -->
+    <link rel="manifest" href="/manifest.json" />
+  </head>
+  <body class="overscroll-y-none select-none">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Bulletproof Automated Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((reg) => console.log('Mobile Companion service worker registered!', reg.scope))
+            .catch((err) => console.error('Service worker registration failed:', err));
+        });
+      }
+    </script>
+  </body>
+</html>
+
