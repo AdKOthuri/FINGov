@@ -283,6 +283,71 @@ Important Parsing Guidelines:
 });
 
 /**
+ * Chatbot API endpoint utilizing gemini-3.5-flash
+ * It receives message history and returns the AI's response.
+ */
+app.post('/api/ai/chat', async (req, res) => {
+  try {
+    const { message, history } = req.body;
+    if (!message) {
+      return res.status(400).json({ success: false, error: 'No message provided' });
+    }
+
+    let ai;
+    try {
+      ai = getAiClient();
+    } catch (err: any) {
+       return res.status(200).json({
+         success: true,
+         text: "I am a simulated AI. Please configure your GEMINI_API_KEY to enable full chat capabilities.",
+       });
+    }
+
+    const systemInstruction = `
+You are Jan Dhan Assistant, an intelligent financial companion for this secure sandbox environment. 
+Your role is to help the user understand their finances, give helpful budgeting tips, and answer questions about typical Indian financial contexts (taxes, mutual funds, saving schemes).
+Keep your answers brief, professional, polite, and well-formatted. Avoid giving strictly regulated investment advice, suggest consulting professionals.
+    `.trim();
+
+    // Map the history to the format required by the SDK for Chats, or just use ai.models.generateContent directly depending on if we recreate a chat object or just pass a whole block of text.
+    // We will use ai.chats.create 
+    const chat = ai.chats.create({
+      model: "gemini-3.5-flash",
+      config: {
+        systemInstruction,
+        temperature: 0.7,
+      },
+    });
+
+    // If there is history, we could initialize it or just pass history in a single shot prompt. Since SDK chat history initialization is specific, let's just use generateContent with appended history array, but the chat object doesn't easily set history. So let's use generateContent with the full conversation array.
+    const contents: any[] = [];
+    if (history && Array.isArray(history)) {
+      history.forEach((msg) => {
+        contents.push({ role: msg.role === 'user' ? 'user' : 'model', parts: [{ text: msg.text }] });
+      });
+    }
+    contents.push({ role: 'user', parts: [{ text: message }] });
+
+    const response = await ai.models.generateContent({
+      model: "gemini-3.5-flash",
+      contents,
+      config: { systemInstruction, temperature: 0.7 }
+    });
+
+    res.json({
+      success: true,
+      text: response.text || '',
+    });
+  } catch (error: any) {
+    console.error('Error in chat API:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'An error occurred during chat generation',
+    });
+  }
+});
+
+/**
  * Fallback static scraper simulation if Gemini API Key is not set or failed.
  * This looks for keywords in the user's text and maps them to clean records.
  * Ensures the UX is flawless even before they input their API key.

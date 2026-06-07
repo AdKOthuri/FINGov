@@ -281,7 +281,7 @@ export function exportFinancialPDF(state: WorkspaceState) {
   // Developer Signature
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(245, 158, 11); // Amber
-  doc.text(`Developed by: ${state.developerSignature || 'KOTTURI R R K SREEKANTH'}`, 198, 282, { align: 'right' });
+  doc.text(`Developed by: ${state.developerSignature || 'KARTHEEK'}`, 198, 282, { align: 'right' });
 
   // Trigger download instantly
   doc.save(`Jan_Dhan_Financial_Statement_${new Date().toISOString().split('T')[0]}.pdf`);

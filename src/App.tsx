@@ -43,6 +43,7 @@ import { SIPMutualFunds } from './components/SIPMutualFunds';
 import { AssetsList } from './components/AssetsList';
 import { TaxCalculator } from './components/TaxCalculator';
 import { SecurityLock } from './components/SecurityLock';
+import { Chatbot } from './components/Chatbot';
 import { exportFinancialPDF } from './utils/pdfExport';
 import { 
   initAuth, 
@@ -236,7 +237,7 @@ const initialDemoState: WorkspaceState = {
       purchaseValue: 900000.00
     }
   ],
-  developerSignature: 'KOTTURI R R K SREEKANTH'
+  developerSignature: 'KARTHEEK'
 };
 
 export default function App() {
@@ -1339,11 +1340,11 @@ export default function App() {
               <span 
                 className="text-amber-500 cursor-pointer hover:text-amber-400 border-b border-transparent hover:border-amber-500/30 transition-colors"
                 onClick={() => {
-                  setSignatureInput(state.developerSignature || 'KOTTURI R R K SREEKANTH');
+                  setSignatureInput(state.developerSignature || 'KARTHEEK');
                   setIsEditingSignature(true);
                 }}
               >
-                {state.developerSignature || 'KOTTURI R R K SREEKANTH'}
+                {state.developerSignature || 'KARTHEEK'}
               </span>
             )}
           </div>
@@ -1515,6 +1516,8 @@ export default function App() {
           </div>
         </div>
       )}
+
+      <Chatbot />
     </div>
   );
 }
